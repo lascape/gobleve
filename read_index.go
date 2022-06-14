@@ -22,3 +22,14 @@ func ReadHighlightIndex(index bleve.Index) (*bleve.SearchResult, error) {
 	}
 	return search, nil
 }
+
+func ReadFieldIndex(index bleve.Index) (*bleve.SearchResult, error) {
+	query := bleve.NewMatchQuery("body")
+	query.SetField("from")
+	request := bleve.NewSearchRequest(query)
+	search, err := index.Search(request)
+	if err != nil {
+		return nil, err
+	}
+	return search, nil
+}

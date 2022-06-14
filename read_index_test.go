@@ -31,3 +31,17 @@ func TestReadHighlightIndex(t *testing.T) {
 	}
 	t.Log(result.String())
 }
+
+func TestReadFieldIndex(t *testing.T) {
+	index, err := CreateOrLoadIndex()
+	if err != nil {
+		t.Errorf("CreateOrLoadIndex Failure: %v", err)
+		return
+	}
+	result, err := ReadFieldIndex(index)
+	if err != nil {
+		t.Errorf("ReadIndex Failure: %v", err)
+		return
+	}
+	t.Log(result.String())
+}
